@@ -8,4 +8,8 @@ public abstract class HeaterState
   {
 
   }
+  public String position()
+  {
+    return getClass().getSimpleName();
+  }
 }

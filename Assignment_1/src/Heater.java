@@ -18,4 +18,8 @@ public class Heater
   {
     this.state=state;
   }
+  public String position()
+  {
+    return state.position();
+  }
 }
