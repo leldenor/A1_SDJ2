@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+>
+   <children>
+      <Button onAction="#goUpButton" layoutX="125.0" layoutY="274.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="137.0" text="GO UP">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Button>
+      <Button onAction="#detailsButton" layoutX="360.0" layoutY="127.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="162.0" text="DETAILS">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Button>
+      <Label layoutX="56.0" layoutY="38.0" text="INDOOR TEMPERATURES">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="70.0" text="Thermometer 1: " />
+      <Label layoutX="56.0" layoutY="87.0" text="Thermometer 2: " />
+      <Label fx:id="t2Label" layoutX="152.0" layoutY="87.0" text="-10 °C" textFill="#69b7ff">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="132.0" text="OUTDOOR TEMPERATURES">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="164.0" text="Thermometer 3: " />
+      <Label fx:id="t3Label" layoutX="157.0" layoutY="164.0" text="69 °C" textFill="#ff6868">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="360.0" layoutY="35.0" text="HEATERS POWER POSITION">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="360.0" layoutY="67.0" text="Heater 1:" />
+      <Label fx:id="h1Label" layoutX="425.0" layoutY="67.0" text="medium" textFill="#ffb229">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="t1Label" layoutX="155.0" layoutY="70.0" text="69 °C" textFill="#ff6868">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button onAction="#goDownButton" layoutX="328.0" layoutY="274.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="194.0" text="GO DOWN">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
