@@ -79,6 +79,9 @@ public class ThermometerViewModel implements PropertyChangeListener
             case "t2":
               t2.set(incomingTemperature.getValue());
               break;
+            case "t3":
+             t3.set(incomingTemperature.getValue());
+             break;
           }
       }
     });

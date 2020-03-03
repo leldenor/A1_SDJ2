@@ -7,6 +7,7 @@ public class Thermometer implements Runnable
   private String id;
   private double t;
   private int d;
+  private double outsideT;
   private TemperatureModel model;
 
   public Thermometer(String id, double t, int d, TemperatureModel model)
@@ -70,8 +71,12 @@ public class Thermometer implements Runnable
       {
         t = temperature(t, 2, d, 0, 6);
         model.addTemperature(id, t);
+        model.addTemperature(id, t);
         System.out.println(id + "->" + t);
         Thread.sleep(6000);
+        outsideT = externalTemperature(10,-20,20);
+        model.addTemperature("t3", outsideT);
+        Thread.sleep(10000);
       }
       catch (InterruptedException e)
       {

@@ -9,13 +9,16 @@ public class Temperature
    {
       this.id = id;
       this.value = value;
-      time = new DateTime();
+      this.time = new DateTime();
    }
    public double getValue()
    {
       return value;
    }
-   public String getId() { return id;}
+   public String getId()
+   {
+      return id;
+   }
    public DateTime getTime()
    {
       return time;

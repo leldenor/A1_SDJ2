@@ -3,6 +3,7 @@ package mediator;
 import model.Temperature;
 import utility.observer.subject.NamedPropertyChangeSubject;
 
+
 public interface TemperatureModel extends NamedPropertyChangeSubject
 {
   void addTemperature(String id, double temperature);
