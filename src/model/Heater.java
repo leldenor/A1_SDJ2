@@ -1,3 +1,5 @@
+package model;
+
 public class Heater
 {
   private HeaterState state;

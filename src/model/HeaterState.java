@@ -1,3 +1,5 @@
+package model;
+
 public abstract class HeaterState
 {
   public void turnDown(Heater heater)

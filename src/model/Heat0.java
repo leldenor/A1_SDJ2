@@ -1,3 +1,5 @@
+package model;
+
 public class Heat0 extends HeaterState
 {
   @Override public void turnUp(Heater heater)

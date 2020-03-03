@@ -1,8 +1,5 @@
 package viewmodel;
 
-import model.TemperatureViewModel;
-import model.ThermometerViewModel;
-
 public class ViewModelFactory
 {
   private TemperatureViewModel temperatureViewModel;
