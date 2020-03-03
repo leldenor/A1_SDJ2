@@ -1,20 +1,20 @@
 package viewmodel;
 
-import model.TemperatureViewModel;
-import model.ThermometerViewModel;
+import mediator.TemperatureModel;
 
 public class ViewModelFactory
 {
   private TemperatureViewModel temperatureViewModel;
   private ThermometerViewModel thermometerViewModel;
 
-  public ViewModelFactory()
+  public ViewModelFactory(TemperatureModel model)
   {
     this.temperatureViewModel = new TemperatureViewModel();
-    this.thermometerViewModel = new ThermometerViewModel();
+    this.thermometerViewModel = new ThermometerViewModel(model);
   }
 
-  public TemperatureViewModel getTemperatureViewModel() {
+  public TemperatureViewModel getTemperatureViewModel()
+  {
     return this.temperatureViewModel;
   }
 

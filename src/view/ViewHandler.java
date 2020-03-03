@@ -85,7 +85,7 @@ public class ViewHandler
 
   private Region loadTemperatureView(String fxmlFile)
   {
-    if (thermometerViewController == null)
+    if (temperatureViewController == null)
     {
       try
       {

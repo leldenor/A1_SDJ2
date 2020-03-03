@@ -5,10 +5,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.layout.Region;
-import model.TemperatureViewModel;
-
-
-import java.awt.*;
+import viewmodel.TemperatureViewModel;
 
 public class TemperatureViewController
 {
