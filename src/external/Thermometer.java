@@ -2,6 +2,8 @@ package external;
 
 import mediator.TemperatureModel;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Thermometer implements Runnable
 {
   private String id;
@@ -10,11 +12,13 @@ public class Thermometer implements Runnable
   private double outsideT;
   private TemperatureModel model;
 
-  public Thermometer(String id, double t, int d, TemperatureModel model)
+  public Thermometer(String id, double t, int d, double outsideT,
+      TemperatureModel model)
   {
     this.id = id;
     this.t = t;
     this.d = d;
+    this.outsideT = outsideT;
     this.model = model;
   }
 
@@ -65,18 +69,29 @@ public class Thermometer implements Runnable
 
   @Override public void run()
   {
+    model.addTemperature(id, t);
     while (true)
     {
       try
       {
-        t = temperature(t, 2, d, 0, 6);
-        model.addTemperature(id, t);
-        model.addTemperature(id, t);
-        System.out.println(id + "->" + t);
-        Thread.sleep(6000);
-        outsideT = externalTemperature(10,-20,20);
-        model.addTemperature("t3", outsideT);
-        Thread.sleep(10000);
+        switch (id)
+        {
+          case "t1":
+          case "t2":
+            int randomSec = ThreadLocalRandom.current().nextInt(4, 8 + 1);
+            t = temperature(t, 2, d, 0, randomSec);
+            model.addTemperature(id, t);
+            System.out.println(id + "->" + t);
+            Thread.sleep(randomSec * 1000);
+            break;
+          case "t3":
+            outsideT = externalTemperature(outsideT,-20,20);
+            model.addTemperature(id, outsideT);
+            System.out.println(id + "->" + t);
+            Thread.sleep(10000);
+            break;
+        }
+
       }
       catch (InterruptedException e)
       {
