@@ -1,42 +1,86 @@
 package viewmodel;
 
+import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import mediator.TemperatureModel;
+import model.Temperature;
 
-public class ThermometerViewModel
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class ThermometerViewModel implements PropertyChangeListener
 {
-  private StringProperty t1;
-  private StringProperty t2;
-  private StringProperty t3;
+  private DoubleProperty t1;
+  private DoubleProperty t2;
+  private DoubleProperty t3;
   private StringProperty h4;
-  private ViewModelFactory viewModelFactory;
-  public ThermometerViewModel()
+  private TemperatureModel model;
+
+  public ThermometerViewModel(TemperatureModel model)
   {
-//    this.t1=new SimpleStringProperty();
-//    this.t2=new SimpleStringProperty();
-//    this.t3=new SimpleStringProperty();
-//    this.h4=new SimpleStringProperty();
-//    this.viewModelFactory = new ViewModelFactory();
+    this.model = model;
+    this.t1 = new SimpleDoubleProperty();
+    this.t2 = new SimpleDoubleProperty();
+    this.t3 = new SimpleDoubleProperty();
+    this.h4 = new SimpleStringProperty();
+    model.addListener("Temperature", this);
   }
 
   public StringProperty geth4()
   {
     return h4;
   }
-  public StringProperty gett3()
+
+  public DoubleProperty gett3()
   {
     return t3;
   }
-  public StringProperty gett2()
+
+  public DoubleProperty gett2()
   {
     return t2;
   }
-  public StringProperty gett1()
+
+  public DoubleProperty gett1()
   {
     return t1;
   }
-  public ViewModelFactory getViewModelFactory()
+
+  public void goUp()
   {
-    return viewModelFactory;
+
+  }
+
+  public void goDown()
+  {
+
+  }
+
+  public void clear()
+  {
+    //    CLEAR STUFF
+  }
+
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+    Platform.runLater(() -> {
+      switch (evt.getPropertyName())
+      {
+        case "Temperature":
+          Temperature incomingTemperature = (Temperature) evt.getNewValue();
+          switch (incomingTemperature.getId())
+          {
+            case "t1":
+              t1.set(incomingTemperature.getValue());
+              break;
+            case "t2":
+              t2.set(incomingTemperature.getValue());
+              break;
+          }
+      }
+    });
   }
 }

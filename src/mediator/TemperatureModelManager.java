@@ -1,5 +1,6 @@
 package mediator;
 
+import model.Heater;
 import model.Temperature;
 import model.TemperatureList;
 
@@ -10,10 +11,12 @@ public class TemperatureModelManager implements TemperatureModel
 {
   private TemperatureList temperatureList;
   private PropertyChangeSupport propertyChangeSupport;
+  private Heater heater;
 
   public TemperatureModelManager()
   {
     temperatureList = new TemperatureList();
+    this.heater = new Heater();
     this.propertyChangeSupport = new PropertyChangeSupport(this);
   }
 
