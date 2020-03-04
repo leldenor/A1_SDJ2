@@ -27,7 +27,7 @@ public class TemperatureModelManager implements TemperatureModel
     this.temperatureList.addTemperature(temperature);
     if (old != null && old.getValue() != temperature.getValue())
     {
-      System.out.println("-->" + temperature + " (from: " + old + ")");
+//      System.out.println("-->" + temperature + " (from: " + old + ")");
       propertyChangeSupport.firePropertyChange("Temperature", old, temperature);
     }
   }

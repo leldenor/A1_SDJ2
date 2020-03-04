@@ -1,12 +1,18 @@
 package view;
 
+import javafx.animation.Animation;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.Region;
+import javafx.util.Duration;
 import javafx.util.converter.NumberStringConverter;
 import viewmodel.ThermometerViewModel;
 
@@ -37,8 +43,14 @@ public class ThermometerViewController
         new NumberStringConverter());
     h1Label.textProperty().bindBidirectional(viewModel.geth4());
 
-    minSlider.setValue(-20);
-    maxSlider.setValue(20);
+
+    viewModel.gett1().addListener((obs, olB, newB) -> {
+      setT1LabelStyle();
+    });
+
+    viewModel.gett2().addListener((obs, olB, newB) -> {
+      setT2LabelStyle();
+    });
 
     this.minSlider.valueProperty().addListener(new ChangeListener<Number>()
     {
@@ -46,7 +58,9 @@ public class ThermometerViewController
           ObservableValue<? extends Number> observableValue, Number oldValue,
           Number newValue)
       {
-        System.out.println(newValue.intValue());
+        viewModel.setLowValue(newValue.doubleValue());
+        setT1LabelStyle();
+        setT2LabelStyle();
       }
     });
 
@@ -56,7 +70,9 @@ public class ThermometerViewController
           ObservableValue<? extends Number> observableValue, Number oldValue,
           Number newValue)
       {
-        System.out.println(newValue.intValue());
+        viewModel.setHighValue(newValue.doubleValue());
+        setT1LabelStyle();
+        setT2LabelStyle();
       }
     });
 
@@ -70,6 +86,31 @@ public class ThermometerViewController
   public Region getRoot()
   {
     return root;
+  }
+
+  public void setT1LabelStyle()
+  {
+    if (viewModel.gett1().get() > viewModel.getHighValue() || viewModel.gett1().get() < viewModel.getLowValue())
+    {
+      t1Label.setStyle("-fx-text-fill: RED");
+    }
+    else
+    {
+      t1Label.setStyle("-fx-text-fill: BLACK");
+    }
+  }
+
+  public void setT2LabelStyle()
+  {
+    if (viewModel.gett2().get() > viewModel.getHighValue() || viewModel.gett2().get() < viewModel.getLowValue())
+    {
+      t2Label.setStyle("-fx-text-fill: RED");
+    }
+    else
+    {
+      t2Label.setStyle("-fx-text-fill: BLACK");
+    }
+
   }
 
   @FXML public void goUpButton()
