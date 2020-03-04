@@ -1,3 +1,4 @@
+import external.OutsideThermometer;
 import external.Thermometer;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -14,9 +15,9 @@ public class MyApplication extends Application
     ViewModelFactory viewModelFactory = new ViewModelFactory(model);
     ViewHandler view = new ViewHandler(viewModelFactory);
 
-    Thermometer t1 = new Thermometer("t1", 15, 1, 0, model);
-    Thermometer t2 = new Thermometer("t2", 15, 7, 0, model);
-    Thermometer t3 = new Thermometer("t3", 15, 7, 0, model);
+    Thermometer t1 = new Thermometer("t1", 15, 1, model);
+    Thermometer t2 = new Thermometer("t2", 15, 7, model);
+    OutsideThermometer t3 = new OutsideThermometer("t3", 0, 10, model);
 
     Thread ThermometerThread = new Thread(t1);
     Thread ThermometerThread2 = new Thread(t2);
