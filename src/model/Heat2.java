@@ -11,4 +11,8 @@ public class Heat2 extends HeaterState
   {
     heater.setState(new Heat1());
   }
+  @Override public String position()
+  {
+    return "Heating is on medium";
+  }
 }

@@ -6,4 +6,8 @@ public class Heat0 extends HeaterState
   {
     heater.setState(new Heat1());
   }
+  @Override public String position()
+  {
+    return "Heating is off";
+  }
 }
