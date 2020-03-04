@@ -9,16 +9,13 @@ public class Thermometer implements Runnable
   private String id;
   private double t;
   private int d;
-  private double outsideT;
   private TemperatureModel model;
 
-  public Thermometer(String id, double t, int d, double outsideT,
-      TemperatureModel model)
+  public Thermometer(String id, double t, int d, TemperatureModel model)
   {
     this.id = id;
     this.t = t;
     this.d = d;
-    this.outsideT = outsideT;
     this.model = model;
   }
 
@@ -51,22 +48,6 @@ public class Thermometer implements Runnable
     return t;
   }
 
-  /*** Calculating the external temperature.
-   * Values are only valid if the temperature is being measured
-   * approximately every 10th second.
-   * @param t0  the last measured external temperature
-   * @param min a lower limit (may temporally be deceeded)
-   * @param max an upper limit (may temporally be exceeded)
-   * @return an updated external temperature*/
-  public double externalTemperature(double t0, double min, double max)
-  {
-    double left = t0 - min;
-    double right = max - t0;
-    int sign = Math.random() * (left + right) > left ? 1 : -1;
-    t0 += sign * Math.random();
-    return t0;
-  }
-
   @Override public void run()
   {
     model.addTemperature(id, t);
@@ -74,24 +55,10 @@ public class Thermometer implements Runnable
     {
       try
       {
-        switch (id)
-        {
-          case "t1":
-          case "t2":
-            int randomSec = ThreadLocalRandom.current().nextInt(4, 8 + 1);
-            t = temperature(t, 2, d, 0, randomSec);
-            model.addTemperature(id, t);
-            System.out.println(id + "->" + t);
-            Thread.sleep(randomSec * 1000);
-            break;
-          case "t3":
-            outsideT = externalTemperature(outsideT,-20,20);
-            model.addTemperature(id, outsideT);
-            System.out.println(id + "->" + t);
-            Thread.sleep(10000);
-            break;
-        }
-
+        int randomSec = ThreadLocalRandom.current().nextInt(4, 8 + 1);
+        t = temperature(t, 2, d, 0, randomSec);
+        model.addTemperature(id, t);
+        Thread.sleep(randomSec * 1000);
       }
       catch (InterruptedException e)
       {
