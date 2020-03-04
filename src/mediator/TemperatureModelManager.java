@@ -43,6 +43,23 @@ public class TemperatureModelManager implements TemperatureModel
     return temperatureList.getLastTemperature(id);
   }
 
+  @Override public int heaterPosition()
+  {
+    return heater.position();
+  }
+
+  @Override public void goUp()
+  {
+    propertyChangeSupport.firePropertyChange("Heater",heaterPosition(),heaterPosition()+1);
+    heater.turnUp();
+  }
+
+  @Override public void goDown()
+  {
+    propertyChangeSupport.firePropertyChange("Heater",heaterPosition(),heaterPosition()-1);
+    heater.turnDown();
+  }
+
   @Override public void addListener(String propertyName,
       PropertyChangeListener listener)
   {

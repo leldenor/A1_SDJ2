@@ -39,8 +39,8 @@ public class Heat3 extends HeaterState
       completed = true;
     }
   }
-  @Override public String position()
+  @Override public int position()
   {
-    return "Heating is on highest";
+    return 3;
   }
 }

@@ -56,7 +56,7 @@ public class Thermometer implements Runnable
       try
       {
         int randomSec = ThreadLocalRandom.current().nextInt(4, 8 + 1);
-        t = temperature(t, 2, d, 0, randomSec);
+        t = temperature(t, model.heaterPosition(), d, 0, randomSec);
         model.addTemperature(id, t);
         Thread.sleep(randomSec * 1000);
       }

@@ -11,8 +11,8 @@ public class Heat1 extends HeaterState
   {
     heater.setState(new Heat2());
   }
-  @Override public String position()
+  @Override public int position()
   {
-    return "Heating is on low";
+    return 1;
   }
 }

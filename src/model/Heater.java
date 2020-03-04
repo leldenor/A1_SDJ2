@@ -20,7 +20,7 @@ public class Heater
   {
     this.state=state;
   }
-  public String position()
+  public int position()
   {
     return state.position();
   }
