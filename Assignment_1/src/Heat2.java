@@ -1,18 +1,12 @@
-package model;
-
 public class Heat2 extends HeaterState
 {
   @Override public void turnUp(Heater heater)
   {
-    heater.setState(new Heat3(heater));
+    heater.setState(new Heat3());
   }
 
   @Override public void turnDown(Heater heater)
   {
     heater.setState(new Heat1());
-  }
-  @Override public int position()
-  {
-    return 2;
   }
 }

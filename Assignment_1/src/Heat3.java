@@ -1,14 +1,12 @@
-package model;
-
 public class Heat3 extends HeaterState
 {
-  private Thread time;
-  private boolean completed;
+  private Thread timer;
+  private boolean complete;
 
   public Heat3(Heater heater)
   {
-    completed = false;
-    time = new Thread(() -> {
+    complete=false;
+    timer=new Thread(()->{
       try
       {
         Thread.sleep(5000);
@@ -16,31 +14,25 @@ public class Heat3 extends HeaterState
       }
       catch (InterruptedException e)
       {
-
       }
     });
-    time.start();
   }
   private void timeout(Heater heater)
   {
-    if (!completed)
+    if(!complete)
     {
       heater.setState(new Heat2());
-      completed = true;
+      complete=true;
     }
   }
 
   @Override public void turnDown(Heater heater)
   {
-    if (!completed)
+    if(!complete)
     {
-      time.interrupt();
+      timer.interrupt();
       heater.setState(new Heat2());
-      completed = true;
+      complete=true;
     }
-  }
-  @Override public int position()
-  {
-    return 3;
   }
 }

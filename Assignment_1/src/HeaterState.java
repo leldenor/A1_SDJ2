@@ -1,5 +1,3 @@
-package model;
-
 public abstract class HeaterState
 {
   public void turnDown(Heater heater)
@@ -10,5 +8,8 @@ public abstract class HeaterState
   {
 
   }
-  public abstract int position();
+  public String position()
+  {
+    return getClass().getSimpleName();
+  }
 }

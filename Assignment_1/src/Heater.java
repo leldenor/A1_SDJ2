@@ -1,5 +1,3 @@
-package model;
-
 public class Heater
 {
   private HeaterState state;
@@ -20,7 +18,7 @@ public class Heater
   {
     this.state=state;
   }
-  public int position()
+  public String position()
   {
     return state.position();
   }

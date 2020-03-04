@@ -74,10 +74,12 @@ public class ThermometerViewController
 
   @FXML public void goUpButton()
   {
+    viewModel.goUp();
   }
 
   @FXML public void goDownButton()
   {
+    viewModel.goDown();
   }
 
   @FXML public void detailsButton()

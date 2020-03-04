@@ -27,6 +27,7 @@ public class ThermometerViewModel implements PropertyChangeListener
     this.t3 = new SimpleDoubleProperty();
     this.h4 = new SimpleStringProperty();
     model.addListener("Temperature", this);
+    model.addListener("Heater", this);
   }
 
   public StringProperty geth4()
@@ -51,12 +52,12 @@ public class ThermometerViewModel implements PropertyChangeListener
 
   public void goUp()
   {
-
+    model.goUp();
   }
 
   public void goDown()
   {
-
+    model.goDown();
   }
 
   public void clear()
@@ -83,6 +84,7 @@ public class ThermometerViewModel implements PropertyChangeListener
              t3.set(incomingTemperature.getValue());
              break;
           }
+        case "Heater": h4.set(model.heaterPosition()+"");
       }
     });
   }
