@@ -6,6 +6,7 @@ import model.TemperatureList;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class TemperatureModelManager implements TemperatureModel
 {
@@ -60,6 +61,11 @@ public class TemperatureModelManager implements TemperatureModel
     heater.turnDown();
   }
 
+  @Override public ArrayList<Temperature> getLastTemperatures(int number)
+  {
+    return temperatureList.getLastTemperatures(number);
+  }
+
   @Override public void addListener(String propertyName,
       PropertyChangeListener listener)
   {
@@ -86,6 +92,8 @@ public class TemperatureModelManager implements TemperatureModel
           .removePropertyChangeListener(propertyName, listener);
     }
   }
+
+
 
   // and maybe other methods...
 }

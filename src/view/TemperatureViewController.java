@@ -1,5 +1,6 @@
 package view;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
@@ -31,9 +32,12 @@ public class TemperatureViewController
     XYChart.Series series1 = new XYChart.Series();
     series1.setName("Portfolio 1");
 
-    series1.getData().add(new XYChart.Data("Jan", 23));
-    series1.getData().add(new XYChart.Data("Feb", 14));
-    series1.getData().add(new XYChart.Data("Mar", 15));
+    ObservableList<XYChart.Data> list = viewModel.getList();
+
+    for(int i = 0; i < list.size(); i++) {
+      series1.getData().add(list.get(i));
+    }
+
     TemperatureChart.getData().add(series1);
   }
 

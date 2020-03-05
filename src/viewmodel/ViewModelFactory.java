@@ -9,7 +9,7 @@ public class ViewModelFactory
 
   public ViewModelFactory(TemperatureModel model)
   {
-    this.temperatureViewModel = new TemperatureViewModel();
+    this.temperatureViewModel = new TemperatureViewModel(model);
     this.thermometerViewModel = new ThermometerViewModel(model);
   }
 
