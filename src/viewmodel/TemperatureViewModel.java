@@ -16,8 +16,14 @@ import java.util.ArrayList;
 
 public class TemperatureViewModel implements PropertyChangeListener
 {
-  private ObservableList<XYChart.Data> list;
-  private ObjectProperty<ObservableList<XYChart.Data>> test;
+  private ObservableList<XYChart.Data> t1List;
+  private ObservableList<XYChart.Data> t2List;
+  private ObservableList<XYChart.Data> t3List;
+
+  private ObjectProperty<ObservableList<XYChart.Data>> t1ListProperty;
+  private ObjectProperty<ObservableList<XYChart.Data>> t2ListProperty;
+  private ObjectProperty<ObservableList<XYChart.Data>> t3ListProperty;
+
   private SimpleStringProperty thermometerID;
   private TemperatureModel model;
   private ViewModelFactory viewModelFactory;
@@ -25,8 +31,16 @@ public class TemperatureViewModel implements PropertyChangeListener
   public TemperatureViewModel(TemperatureModel model)
   {
     this.model = model;
-    this.list = createList();
-    this.test = new SimpleObjectProperty<>();
+
+    this.t1List = createList();
+    this.t2List = createList();
+    this.t3List = createList();
+
+
+    this.t1ListProperty = new SimpleObjectProperty<>();
+    this.t2ListProperty = new SimpleObjectProperty<>();
+    this.t3ListProperty = new SimpleObjectProperty<>();
+
     model.addListener("Temperature", this);
   }
 
@@ -53,23 +67,57 @@ public class TemperatureViewModel implements PropertyChangeListener
 
   private void addToTheList(Temperature temperature)
   {
-    if(temperature.getId().equals("t3"))
+    if (temperature.getId().equals("t1"))
     {
-      this.list.add(new XYChart.Data(temperature.getTime().getSortableTime(),
+      this.t1List.add(new XYChart.Data(temperature.getTime().getSortableTime(),
           temperature.getValue()));
 
-      test.setValue(this.createList());
+      t1ListProperty.setValue(this.createList());
+    }
+    else if (temperature.getId().equals("t2"))
+    {
+      this.t2List.add(new XYChart.Data(temperature.getTime().getSortableTime(),
+          temperature.getValue()));
+
+      t2ListProperty.setValue(this.createList());
+    }
+    else if (temperature.getId().equals("t3"))
+    {
+      this.t3List.add(new XYChart.Data(temperature.getTime().getSortableTime(),
+          temperature.getValue()));
+
+      t3ListProperty.setValue(this.createList());
     }
   }
 
-  public ObservableList<XYChart.Data> getList()
+  public ObservableList<XYChart.Data> getT1List()
   {
-    return list;
+    return t1List;
   }
 
-  public ObjectProperty<ObservableList<XYChart.Data>> getTest()
+  public ObservableList<XYChart.Data> getT2List()
   {
-    return test;
+    return t2List;
+  }
+
+  public ObservableList<XYChart.Data> getT3List()
+  {
+    return t3List;
+  }
+
+  public ObjectProperty<ObservableList<XYChart.Data>> getT1ListProperty()
+  {
+    return t1ListProperty;
+  }
+
+  public ObjectProperty<ObservableList<XYChart.Data>> getT2ListProperty()
+  {
+    return t2ListProperty;
+  }
+
+  public ObjectProperty<ObservableList<XYChart.Data>> getT3ListProperty()
+  {
+    return t3ListProperty;
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

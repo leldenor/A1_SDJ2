@@ -26,24 +26,40 @@ public class TemperatureViewController
     this.viewModel = viewModel;
     this.root = root;
 
-    TemperatureChart.setTitle("HAI SA VADEM");
+    TemperatureChart.setTitle("Temperature Chart");
+
     XYChart.Series series1 = new XYChart.Series();
-    series1.setName("Portfolio 1");
+    XYChart.Series series2 = new XYChart.Series();
+    XYChart.Series series3 = new XYChart.Series();
 
-    ObservableList<XYChart.Data> list = viewModel.getList();
+    series1.setName("T 1");
+    series2.setName("T 2");
+    series3.setName("T 3");
 
-    for(int i = 0; i < list.size(); i++) {
-      series1.getData().add(list.get(i));
-    }
+    ObservableList<XYChart.Data> t1list = viewModel.getT1List();
+    ObservableList<XYChart.Data> t2list = viewModel.getT2List();
+    ObservableList<XYChart.Data> t3list = viewModel.getT3List();
 
-    viewModel.getTest().addListener((obs, olV, newV) -> {
-      series1.getData().add(list.get(list.size() - 1));
+//    for(int i = 0; i < list.size(); i++) {
+//      series1.getData().add(list.get(i));
+//    }
+
+    viewModel.getT1ListProperty().addListener((obs, olV, newV) -> {
+      series1.getData().add(t1list.get(t1list.size() - 1));
+    });
+
+    viewModel.getT2ListProperty().addListener((obs, olV, newV) -> {
+      series2.getData().add(t2list.get(t2list.size() - 1));
+    });
+
+    viewModel.getT3ListProperty().addListener((obs, olV, newV) -> {
+      series3.getData().add(t3list.get(t3list.size() - 1));
     });
 
 
-
     TemperatureChart.getData().add(series1);
-
+    TemperatureChart.getData().add(series2);
+    TemperatureChart.getData().add(series3);
 
   }
 
