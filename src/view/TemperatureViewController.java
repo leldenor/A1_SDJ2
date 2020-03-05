@@ -12,8 +12,6 @@ import viewmodel.TemperatureViewModel;
 public class TemperatureViewController
 {
   @FXML private LineChart TemperatureChart;
-//  @FXML private CategoryAxis TemperatureChartX;
-//  @FXML private NumberAxis TemperatureChartY;
 
   private Region root;
   private TemperatureViewModel viewModel;
@@ -34,11 +32,17 @@ public class TemperatureViewController
 
     ObservableList<XYChart.Data> list = viewModel.getList();
 
-    for(int i = 0; i < list.size(); i++) {
-      series1.getData().add(list.get(i));
-    }
+    viewModel.getTest().addListener((obs, olV, newV) -> {
+      for(int i = 0; i < list.size(); i++) {
+        series1.getData().add(list.get(i));
+      }
+    });
+
+
 
     TemperatureChart.getData().add(series1);
+
+
   }
 
   public void reset()

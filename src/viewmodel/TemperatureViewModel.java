@@ -1,6 +1,8 @@
 package viewmodel;
 
 import javafx.application.Platform;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class TemperatureViewModel implements PropertyChangeListener
 {
   private ObservableList<XYChart.Data> list;
+  private ObjectProperty<ObservableList<XYChart.Data>> test;
   private SimpleStringProperty thermometerID;
   private TemperatureModel model;
   private ViewModelFactory viewModelFactory;
@@ -23,6 +26,7 @@ public class TemperatureViewModel implements PropertyChangeListener
   {
     this.model = model;
     this.list = createList();
+    this.test = new SimpleObjectProperty<>();
     model.addListener("Temperature", this);
   }
 
@@ -41,6 +45,7 @@ public class TemperatureViewModel implements PropertyChangeListener
       obsList.add(
           new XYChart.Data(lastTemperatures.get(i).getTime().getSortableTime(),
               lastTemperatures.get(i).getValue()));
+
     }
 
     return obsList;
@@ -50,11 +55,18 @@ public class TemperatureViewModel implements PropertyChangeListener
   {
     this.list.add(new XYChart.Data(temperature.getTime().getSortableTime(),
         temperature.getValue()));
+    System.out.println("lol");
+    test.setValue(this.createList());
   }
 
   public ObservableList<XYChart.Data> getList()
   {
     return list;
+  }
+
+  public ObjectProperty<ObservableList<XYChart.Data>> getTest()
+  {
+    return test;
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
