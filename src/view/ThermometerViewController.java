@@ -43,7 +43,6 @@ public class ThermometerViewController
         new NumberStringConverter());
     h1Label.textProperty().bindBidirectional(viewModel.geth4());
 
-
     viewModel.gett1().addListener((obs, olB, newB) -> {
       setT1LabelStyle();
     });

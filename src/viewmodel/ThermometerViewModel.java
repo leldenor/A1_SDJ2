@@ -110,6 +110,7 @@ public class ThermometerViewModel implements PropertyChangeListener
           }
         case "Heater":
           h4.set(model.heaterPosition() + "");
+          break;
       }
     });
   }
