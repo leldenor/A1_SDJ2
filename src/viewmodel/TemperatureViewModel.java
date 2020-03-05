@@ -36,7 +36,6 @@ public class TemperatureViewModel implements PropertyChangeListener
     this.t2List = createList();
     this.t3List = createList();
 
-
     this.t1ListProperty = new SimpleObjectProperty<>();
     this.t2ListProperty = new SimpleObjectProperty<>();
     this.t3ListProperty = new SimpleObjectProperty<>();
@@ -67,25 +66,22 @@ public class TemperatureViewModel implements PropertyChangeListener
 
   private void addToTheList(Temperature temperature)
   {
+    XYChart.Data chartTemperature = new XYChart.Data(
+        temperature.getTime().getSortableTime(), temperature.getValue());
+
     if (temperature.getId().equals("t1"))
     {
-      this.t1List.add(new XYChart.Data(temperature.getTime().getSortableTime(),
-          temperature.getValue()));
-
+      this.t1List.add(chartTemperature);
       t1ListProperty.setValue(this.createList());
     }
     else if (temperature.getId().equals("t2"))
     {
-      this.t2List.add(new XYChart.Data(temperature.getTime().getSortableTime(),
-          temperature.getValue()));
-
+      this.t2List.add(chartTemperature);
       t2ListProperty.setValue(this.createList());
     }
     else if (temperature.getId().equals("t3"))
     {
-      this.t3List.add(new XYChart.Data(temperature.getTime().getSortableTime(),
-          temperature.getValue()));
-
+      this.t3List.add(chartTemperature);
       t3ListProperty.setValue(this.createList());
     }
   }
@@ -133,16 +129,4 @@ public class TemperatureViewModel implements PropertyChangeListener
       }
     });
   }
-  //  public  gettemperatureChart()
-  //  {
-  //    return temperatureChart;
-  //  }
-  //  public  gettemperatureChartX()
-  //  {
-  //    return temperatureChartX;
-  //  }
-  //  public   gettemperatureChartY()
-  //  {
-  //    return temperatureChartY;
-  //  }
 }

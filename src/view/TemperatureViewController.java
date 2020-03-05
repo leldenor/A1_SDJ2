@@ -40,9 +40,17 @@ public class TemperatureViewController
     ObservableList<XYChart.Data> t2list = viewModel.getT2List();
     ObservableList<XYChart.Data> t3list = viewModel.getT3List();
 
-//    for(int i = 0; i < list.size(); i++) {
-//      series1.getData().add(list.get(i));
-//    }
+    for(int i = 0; i < t1list.size(); i++) {
+      series1.getData().add(t1list.get(i));
+    }
+
+    for(int i = 0; i < t2list.size(); i++) {
+      series2.getData().add(t2list.get(i));
+    }
+
+    for(int i = 0; i < t3list.size(); i++) {
+      series3.getData().add(t3list.get(i));
+    }
 
     viewModel.getT1ListProperty().addListener((obs, olV, newV) -> {
       series1.getData().add(t1list.get(t1list.size() - 1));

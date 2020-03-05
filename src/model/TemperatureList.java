@@ -48,7 +48,8 @@ public class TemperatureList
   public ArrayList<Temperature> getLastTemperatures(int number)
   {
      ArrayList<Temperature> newList = new ArrayList<>();
-    if (number > 20)
+
+    if (list.size() > 20)
     {
        for (int i = list.size() - number; i < list.size(); i++)
        {
