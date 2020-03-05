@@ -53,10 +53,13 @@ public class TemperatureViewModel implements PropertyChangeListener
 
   private void addToTheList(Temperature temperature)
   {
-    this.list.add(new XYChart.Data(temperature.getTime().getSortableTime(),
-        temperature.getValue()));
-    System.out.println("lol");
-    test.setValue(this.createList());
+    if(temperature.getId().equals("t3"))
+    {
+      this.list.add(new XYChart.Data(temperature.getTime().getSortableTime(),
+          temperature.getValue()));
+
+      test.setValue(this.createList());
+    }
   }
 
   public ObservableList<XYChart.Data> getList()
