@@ -84,11 +84,6 @@ public class ThermometerViewModel implements PropertyChangeListener
     this.lowValue = lowValue;
   }
 
-  public void clear()
-  {
-    //    CLEAR STUFF
-  }
-
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(() -> {

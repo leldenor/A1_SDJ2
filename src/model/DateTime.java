@@ -24,9 +24,4 @@ public class DateTime
             "yyyy-MM-dd-HH-mm-ss");
       return sdf.format(date).substring(sdf.format(date).length() - 8);
    }
-   public String getSortableDate()
-   {
-      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-      return sdf.format(date);
-   }
 }

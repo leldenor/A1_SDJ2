@@ -53,11 +53,6 @@ public class ViewHandler
     primaryStage.show();
   }
 
-  public void closeView()
-  {
-    primaryStage.close();
-  }
-
   private Region loadThermometerView(String fxmlFile)
   {
     if (thermometerViewController == null)

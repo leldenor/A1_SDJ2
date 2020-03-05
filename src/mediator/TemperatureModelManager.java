@@ -28,14 +28,8 @@ public class TemperatureModelManager implements TemperatureModel
     this.temperatureList.addTemperature(temperature);
     if (old != null && old.getValue() != temperature.getValue())
     {
-//      System.out.println("-->" + temperature + " (from: " + old + ")");
       propertyChangeSupport.firePropertyChange("Temperature", old, temperature);
     }
-  }
-
-  @Override public synchronized Temperature getLastInsertedTemperature()
-  {
-    return temperatureList.getLastTemperature(null);
   }
 
   @Override public synchronized Temperature getLastInsertedTemperature(
@@ -92,8 +86,4 @@ public class TemperatureModelManager implements TemperatureModel
           .removePropertyChangeListener(propertyName, listener);
     }
   }
-
-
-
-  // and maybe other methods...
 }

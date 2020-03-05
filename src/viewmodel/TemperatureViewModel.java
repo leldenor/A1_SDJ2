@@ -3,7 +3,6 @@ package viewmodel;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.XYChart;
@@ -24,9 +23,7 @@ public class TemperatureViewModel implements PropertyChangeListener
   private ObjectProperty<ObservableList<XYChart.Data>> t2ListProperty;
   private ObjectProperty<ObservableList<XYChart.Data>> t3ListProperty;
 
-  private SimpleStringProperty thermometerID;
   private TemperatureModel model;
-  private ViewModelFactory viewModelFactory;
 
   public TemperatureViewModel(TemperatureModel model)
   {
@@ -41,11 +38,6 @@ public class TemperatureViewModel implements PropertyChangeListener
     this.t3ListProperty = new SimpleObjectProperty<>();
 
     model.addListener("Temperature", this);
-  }
-
-  public SimpleStringProperty getThermometerID()
-  {
-    return thermometerID;
   }
 
   private synchronized ObservableList<XYChart.Data> createList()

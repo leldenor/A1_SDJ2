@@ -2,9 +2,7 @@ package view;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.Region;
 import viewmodel.TemperatureViewModel;
@@ -73,7 +71,7 @@ public class TemperatureViewController
 
   public void reset()
   {
-    // viewModel.clear();
+//     viewModel.clear();
   }
 
   public Region getRoot()
