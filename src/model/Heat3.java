@@ -11,7 +11,7 @@ public class Heat3 extends HeaterState
     time = new Thread(() -> {
       try
       {
-        Thread.sleep(5000);
+        Thread.sleep(40000);
         timeout(heater);
       }
       catch (InterruptedException e)
